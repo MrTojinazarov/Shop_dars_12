@@ -1,7 +1,7 @@
 <?php
 session_start();
 $con = new PDO("mysql:host=localhost;dbname=market", 'root', 'mr2344');
-$sql = "SELECT products.id AS id, products.user_id AS user_id, products.category_id AS ct_name, products.name AS name, products.price AS price, products.photo AS photo, products.count AS count, products.premium AS premium FROM products LEFT JOIN categories ON products.category_id = categories.id";
+$sql = "SELECT products.id AS id, products.user_id AS user_id, products.category_id AS ct_name, products.name AS name, products.price AS price, products.photo AS photo, products.count AS count, products.premium AS premium FROM products LEFT JOIN categories ON products.category_id = categories.id WHERE user_id = '{$_SESSION['user_id']}'";
 $statement1 = $con->query($sql);
 $products = $statement1->fetchAll(PDO::FETCH_ASSOC);
 
