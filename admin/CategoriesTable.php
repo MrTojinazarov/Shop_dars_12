@@ -105,7 +105,7 @@ include 'header.php';
                         </a>
                         <div class="modal fade" id="<?php echo 'DeleteModal' . $category['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
-                                <form action="CategoryDelete.php" method="POST">
+                                <form action="CategoriesDelete.php" method="POST">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h1 class="modal-title fs-5" id="exampleModalLabel">category qo'shish</h1>
