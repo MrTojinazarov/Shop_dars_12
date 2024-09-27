@@ -1,7 +1,6 @@
 <?php
 session_start();
 $con = new PDO("mysql:host=localhost;dbname=market", 'root', 'mr2344');
-$con = new PDO("mysql:host=localhost;dbname=market", 'root', 'mr2344');
 $sql = "SELECT 
     products.id AS id, 
     products.user_id AS user_id, 

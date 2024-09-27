@@ -48,7 +48,7 @@
                     <span>My Products</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="Category.php">
+                <a class="nav-link" href="CategoriesTable.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Categories</span></a>
             </li>
