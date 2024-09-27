@@ -40,18 +40,12 @@
             <li class="nav-item active">
                 <a class="nav-link" href="admin.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>Main Page</span></a>
             </li>
-
-            <hr class="sidebar-divider">
-
-            <div class="sidebar-heading">
-                Interface
-            </div>
             <li class="nav-item active">
                 <a class="nav-link" href="ProductsTable.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Products</span></a>
+                    <span>My Products</span></a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="Category.php">

@@ -1,7 +1,19 @@
 <?php
 session_start();
 $con = new PDO("mysql:host=localhost;dbname=market", 'root', 'mr2344');
-$sql = "SELECT products.id AS id, products.user_id AS user_id, products.category_id AS ct_name, products.name AS name, products.price AS price, products.photo AS photo, products.count AS count, products.premium AS premium FROM products LEFT JOIN categories ON products.category_id = categories.id WHERE user_id = '{$_SESSION['user_id']}'";
+$con = new PDO("mysql:host=localhost;dbname=market", 'root', 'mr2344');
+$sql = "SELECT 
+    products.id AS id, 
+    products.user_id AS user_id, 
+    categories.name AS ct_name,
+    products.name AS name,
+    products.price AS price, 
+    products.photo AS photo, 
+    products.count AS count, 
+    products.premium AS premium 
+FROM products 
+LEFT JOIN categories ON products.category_id = categories.id 
+WHERE products.user_id = '{$_SESSION['user_id']}'";
 $statement1 = $con->query($sql);
 $products = $statement1->fetchAll(PDO::FETCH_ASSOC);
 
@@ -14,21 +26,22 @@ include 'header.php';
 
 <div class="container-fluid">
     <div class="row m-3">
-        <div class="col-2">
-            <h1>Products</h1>
+        <div class="col-3">
+            <h1>My Products</h1>
             <a href="Product.php" class="btn btn-outline-primary">Create</a>
         </div>
     </div>
     <table class="table table-hover table-striped table-bordered">
         <thead>
-            <tr>
+        <tr>
                 <th scope="col" style="width: 50px;">Id</th>
-                <th scope="col" style="width: 50px;">Category_id</th>
+                <th scope="col" style="width: 150px;">Category Name</th>
                 <th scope="col" style="width: 150px;">Name</th>
                 <th scope="col" style="width: 150px;">Price</th>
                 <th scope="col" style="width: 80px;">Count</th>
-                <th scope="col" style="width: 200px;">Photo</th>
-                <th scope="col" style="width: 200px;">Options</th>
+                <th scope="col" style="width: 80px;">Premium</th>
+                <th scope="col" style="width: 150px;">Photo</th>
+                <th scope="col" style="width: 150px;">Options</th>
             </tr>
         </thead>
         <tbody>
@@ -40,6 +53,15 @@ include 'header.php';
                     <td><?= $product['name'] ?></td>
                     <td><?= $product['price'] ?></td>
                     <td><?= $product['count'] ?></td>
+                    <td>
+                        <?php
+                            if($product['premium']==1){
+                                echo "True";
+                            }else{
+                                echo 'False';
+                            }
+                        ?>
+                    </td>
                     <td><img src="<?= $product['photo'] ?>" width="150px" alt=""></td>
                     <td>
                         <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="<?php echo '#UpdateModal' . $product['id'] ?>">
