@@ -22,7 +22,7 @@ if (isset($_POST['login'])) {
                 header("Location: admin.php");
                 exit();
             }elseif(!empty($user['role']) && $user['role'] == 'user'){
-                header("Location: admin.php");
+                header("Location: user.php");
                 exit();
             }
             exit();
