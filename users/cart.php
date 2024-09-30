@@ -6,44 +6,37 @@ if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
 
-// Mahsulotni savatchadan o'chirish
 if (isset($_GET['remove'])) {
     $productId = $_GET['remove'];
     unset($_SESSION['cart'][$productId]);
 }
 
-// Mahsulot miqdorini yangilash
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
     $productId = $_POST['product_id'];
     $quantity = intval($_POST['quantity']);
 
-    // Mahsulotni bazadan qidirish
     $stmt = $con->prepare("SELECT * FROM products WHERE id = :id");
     $stmt->execute(['id' => $productId]);
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($product) {
-        $availableQuantity = $product['count']; // Mahsulotning mavjud miqdori
+        $availableQuantity = $product['count']; 
 
-        // Kiritilgan miqdorni tekshirish
         if ($quantity > 0 && $quantity <= $availableQuantity) {
-            $_SESSION['cart'][$productId]['quantity'] = $quantity; // Miqdorni yangilash
+            $_SESSION['cart'][$productId]['quantity'] = $quantity; 
         } else {
             echo "<script>alert('Mavjud bo\'lgan mahsulot miqdori etarli emas yoki 0 dan kam bo\'lishi mumkin emas!');</script>";
         }
     }
 }
 
-// Sotib olish tugmasi bosilganda mahsulotni sotilganlar sonidan ayirish
 if (isset($_POST['buy'])) {
     foreach ($_SESSION['cart'] as $productId => $item) {
         $quantitySold = $item['quantity'];
 
-        // Mahsulotni bazadan yangilash
         $stmt = $con->prepare("UPDATE products SET count = count - :quantity WHERE id = :id");
         $stmt->execute(['quantity' => $quantitySold, 'id' => $productId]);
     }
-    // Savatchani tozalash
     $_SESSION['cart'] = [];
     echo "<script>alert('Sotib olish muvaffaqiyatli!');</script>";
 }
@@ -73,12 +66,10 @@ include 'header.php';
             <?php else: ?>
                 <?php foreach ($cartItems as $productId => $item): ?>
                     <?php
-                    // Mahsulotni bazadan qidirish
                     $stmt = $con->prepare("SELECT * FROM products WHERE id = :id");
                     $stmt->execute(['id' => $productId]);
                     $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                    // Jami narxni hisoblash
                     $totalPrice += $product['price'] * $item['quantity'];
                     ?>
                     <tr>

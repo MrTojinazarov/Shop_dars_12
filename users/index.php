@@ -2,24 +2,20 @@
 session_start();
 $con = new PDO("mysql:host=localhost;dbname=market", 'root', 'mr2344');
 
-// Check if the cart exists in the session, if not create it
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
 
-// Add product to cart
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $productId = $_POST['product_id'];
 
-    // Check if the product is already in the cart
     if (!isset($_SESSION['cart'][$productId])) {
         $_SESSION['cart'][$productId] = [
-            'quantity' => 1, // Doimo 1 sifatida qo'shamiz
+            'quantity' => 1, 
         ];
     }
 }
 
-// Fetch all products
 $sql = "SELECT * FROM products";
 $statement = $con->query($sql);
 $products = $statement->fetchAll(PDO::FETCH_ASSOC);
