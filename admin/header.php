@@ -32,25 +32,26 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Main Page</div>
             </a>
 
             <hr class="sidebar-divider my-0">
 
             <li class="nav-item active">
-                <a class="nav-link" href="admin.php">
+                <a class="nav-link" href="CategoriesTable.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Main Page</span></a>
+                    <span>Categories</span></a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="UsersProducts.php">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>User's Products</span></a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="ProductsTable.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>My Products</span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="CategoriesTable.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Categories</span></a>
             </li>
 
             <hr class="sidebar-divider d-none d-md-block">

@@ -22,18 +22,18 @@ if (isset($_POST['login'])) {
                 header("Location: admin.php");
                 exit();
             }elseif(!empty($user['role']) && $user['role'] == 'user'){
-                header("Location: user.php");
+                header("Location: ../users/index.php");
                 exit();
             }
             exit();
         } else {
             $_SESSION['error'] = "Email yoki parol noto'g'ri!";
-            header("Location: index.php");
+            header("Location: login.php");
             exit();
         }
     } else {
         $_SESSION['error'] = "Email va parol maydonlari bo'sh bo'lmasligi kerak!";
-        header("Location: index.php");
+        header("Location: login.php");
         exit();
     }
 }
@@ -71,7 +71,7 @@ if (isset($_POST['login'])) {
                                         <?php unset($_SESSION['error']); ?>
                                     <?php endif; ?>
 
-                                    <form action="index.php" method="POST">
+                                    <form action="login.php" method="POST">
                                         <div class="form-outline mb-4">
                                             <input type="email" name="email" id="formEmail" class="form-control form-control-lg" required />
                                             <label class="form-label" for="formEmail">Emailingiz</label>

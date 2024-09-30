@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
             $_SESSION['loggedin'] = true;
             $_SESSION['user_name'] = $name;
             $_SESSION['success'] = "Ro'yxatdan muvaffaqiyatli o'tdingiz";
-            header("Location: admin.php");
+            header("Location: ../users/index.php");
         } catch (PDOException $th) {
             header("Location: regsCreate.php");
             echo "Xatolik yuz berdi: " . $th->getMessage();

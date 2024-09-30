@@ -16,9 +16,9 @@ if (isset($_POST['ok']) && !empty($_POST['product_id']) && !empty($_POST['user_i
     ]);
 
     $_SESSION['success'] = 'Muvaffaqiyatli yangilandi';
-    header("Location: admin.php");
+    header("Location: UsersProducts.php");
 } else {
     $_SESSION['error'] = 'Yangilashda xatolik yuz berdi';
-    header("Location: admin.php");
+    header("Location: UsersProducts.php");
 }
 ?>
